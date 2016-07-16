@@ -1,0 +1,251 @@
+// out: about.css
+
+@import "variables.styl"
+
+#info-head
+  text-align right
+  position fixed
+  top 0
+  height 100vh
+  transform(translate(-100%, 0))
+  padding 10px
+  border-radius(0 0 0 20px)
+  +for_breakpoint(verticlaire) // mobile mode
+    transform(translate(100%, 0))
+    overflow-x visible
+    right 0
+    top 0
+    z-index 5
+    background white
+    height auto
+    border-style solid
+    border-color #efefef
+    border-width 0 0 1px 1px
+    width 300px
+    transition(all .3s ease)
+    &.active
+      transform(translate(0, 0))
+  .claire-face
+    margin 0 3px 0 auto
+    width 175px
+    height (@width * 7 / 6)
+    +for_breakpoint(verticlaire)
+      width 125px
+      height (@width * 7 / 6)
+      margin 10px auto 0
+  #toc
+    margin 20px 5px 5px
+    +for_breakpoint(verticlaire)
+      margin 20px 20px 5px
+    li.top-level-item
+      margin 10px 0 0
+      &:first-child a.active
+        padding 4px 7px 5px // to offset the uneven-ness caused by having no children
+      ul.sub-list
+        visibility hidden
+        padding 5px 0 2px
+        margin-right .5px
+        max-height 0
+        opacity 0
+        transition(all .3s ease)
+        &:not(:empty)
+          border-right 1px solid $pink4
+        &.active
+          opacity 1
+          max-height 200px
+          visibility visible
+    a
+      cursor pointer
+      padding 0 5px 0 0
+      &.top-level-link
+        padding 4px 5px 5px
+        border-radius(5px 5px 0 5px)
+        &.active
+          background $pink4
+          color white
+          font-weight 900
+      &.sub-level-link
+        color #888
+        font-style italic
+        padding 3px 5px 5px
+        border-radius(5px 0 0 5px)
+        font-size .8em
+        &.active
+          color #444
+          background #efefef
+
+#info-menu-button
+  border-radius(50%)
+  width 50px
+  height 50px
+  position fixed
+  top 23.5px
+  right 25px
+  cursor pointer
+  z-index 10
+  display none
+  +for_breakpoint(verticlaire)
+    display block
+  &:after
+    position absolute
+    top 50%
+    left 50%
+    transform(translate(-50%, -50%))
+    font-family $icons
+    font-size 1.2rem
+    content $icon-menu
+    display block
+
+#info-container
+  width 750px
+  margin 0 auto
+  padding 0 0 30px 150px // left-padding is the width of the claire face minus the TOC right-side padding, to give illusion of centering
+  .info-section
+    border-radius(0 0 20px 20px)
+    background #fafafa
+    padding 0 20px 20px
+    margin-bottom 50px
+    img
+      max-width 100%
+    p, li
+      font-family "Georgia", "Lora", "Times New Roman", serif
+      font-size .95rem
+      line-height 1.8
+    h1
+      color white
+      margin 15px 0 0
+      position relative
+      padding 10px 0
+      font-weight 100
+      background $purple5
+      -webkit-text-stroke-width 0.1px
+      &:before, &:after
+        background @background
+        position absolute
+        display block
+        width 20px
+        height 100%
+        content ' '
+      &:before
+        top 0
+        left 0
+        transform(translate(-100%, 0))
+      &:after
+        top auto
+        left auto
+        bottom 0
+        right 0
+        transform(translate(100%, 0))
+    h2
+      color $green4
+      margin 30px 0 0
+      font-weight 300
+      border-bottom 1px solid @color
+      font-style italic
+    h3
+      color $orange3
+      font-weight 700
+      border-bottom 1px solid @color
+      font-style italic
+    h4
+      display inline-block
+      margin 10px 0 0
+      background $orange1
+      color $orange4
+      padding 1px 10px
+      border-radius(5px)
+    h4 + p // minor headings in Terminology section
+      display inline
+      position relative
+      &:after // force "clear float" if no UL follows the P
+        content ' '
+        display block
+    /* First layer of lists */
+    ol
+      list-style-type decimal
+      margin 0
+      padding 0 45px
+      li
+        margin 5px 0
+        list-style-type decimal
+    ul
+      list-style-type none
+      margin 10px
+      padding 0
+      li
+        margin 10px 60px 0 30px
+        padding 0 0 0 30px
+        position relative
+        font-family $lato
+        font-style italic
+        &:before // quote before sample inputs
+          font-family "Georgia", "Lora", "Times New Roman", serif
+          font-style normal
+          position absolute
+          top 4px
+          left 0
+          font-size 1.5rem
+          width 10px
+          height 10px
+          padding 5px
+          line-height 1
+          border-radius(50%)
+          background $purple1
+          color $purple4
+          content '\00201C'
+          display block
+        /* Double-nested lists */
+        ul
+          font-family $lato
+          li
+            background $green1
+            &:last-child
+              margin-bottom 20px
+    h2 + ul // for the terminology section
+      margin-top 20px
+    pre // words that are formatted `like this` in the Markdown file
+      padding 10px 20px
+      background #fdfdfd
+      border 1px solid #ccc
+      border-radius(5px)
+    code
+      font-family $mono
+      font-size .9em
+      border-radius(3px)
+      padding 3px 0
+      color $purple4
+    p > code, li > code
+      background $purple1
+      padding 0.2em 0.4em
+    h2 code
+      font-style normal
+      color $purple5
+    h3 code
+      font-style normal
+      font-weight normal
+    /* Table formatting */
+    table
+      text-align left
+      width 100%
+      border-collapse collapse
+    thead
+      background $green1
+      font-family $lato
+      font-style italic
+      font-weight 100
+      text-align center
+    tr > td:first-child
+      table-layout fixed
+      width 40%
+    td, th
+      font-size .9em
+      border 1px solid #ccc
+      table-layout fixed
+      width 80px
+      padding 5px
+      border-spacing 0
+  +for_breakpoint(verticlaire)
+    width 100%
+    padding 0 15px 30px
+    .info-section
+      background #f8f8f8

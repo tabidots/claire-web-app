@@ -1,0 +1,968 @@
+// out: app.css
+
+@import "variables.styl"
+
+body, html
+  width 100vw
+
+#app
+  width 100vw
+  min-height 90vh // to detect clicks almost anywhere, even when the screen is blank
+  margin 0 auto 50px  // bottom 50px b/c of fixed footer
+
+#input
+  position fixed
+  width 100vw
+  padding 0 1.5vw
+  display table
+  background white
+  z-index 20
+  top 0
+  border-radius(0 0 20px 20px)
+  transform(translateZ(0)) // helps to eliminate some jankiness http://calendar.perfplanet.com/2013/the-runtime-performance-checklist/)
+  &-left, &-right
+    display table-cell
+    vertical-align middle
+  &-left
+    width 160px
+    min-height (@width * 7 / 6) // very important to assign this here
+    padding 20px
+    .claire-face
+      width 160px
+      height (@width * 7 / 6)
+      transition(all .3s ease)
+      &:hover, &:active
+        transform(scale(1.05))
+  &-right
+    .bubble
+      margin 0 3.1vw 0 1vw
+      min-height 160px * (6 / 7)
+      position relative
+      transition(all .3s ease)
+      cursor text
+      +for_breakpoint(tablet-plus)
+        margin-right 3.5vw
+      +for_breakpoint(tablet)
+        margin-right 4.5vw
+      textarea
+        transition(all .3s ease)
+        position absolute
+        overflow hidden // scrollbar is not needed b/c of auto-expanding
+        top 50%
+        left 50%
+        transform(translate(-50%, -50%))
+        resize none
+        -webkit-appearance none
+        width 90%
+        min-height 40px
+        height 40px
+        text-align center
+        border none
+        color #888
+        font-family $lato
+        font-style italic
+        font-weight 300
+        font-size 1.5rem
+        plain_intl_sans_fallback()
+  +for_breakpoint(tablet)
+    padding 0 1.25vw // green button right-alignment
+  +for_breakpoint(verticlaire)
+    padding 10px 7.25vw 0
+    &-left
+      display none
+    &-right .bubble
+      min-height 85px
+      margin 20px 10px 30px 10px
+      textarea
+        font-size 1.25rem
+        min-height 30px // maintain vert alignment on mobile
+    .button
+      height 30px
+      width 30px
+      font-size 1em
+  .mic
+    background #ccc
+    color white
+    &:after
+      content $icon-mic
+    &:hover
+      border 1px solid #ccc
+      background white
+      color #ccc
+    &.active
+      background $pink1
+      color $pink4
+      border 1px solid $pink4
+      -webkit-animation pulsate .75s infinite linear
+      animation pulsate .75s infinite linear
+
+
+@keyframes pulsate
+  0%, 100%
+    transform(translate(-50%, 50%), scale(1))
+  75%
+    transform(translate(-50%, 50%), scale(1.25))
+
+
+#blanket
+  position fixed
+  top 0
+  left 0
+  width 100vw
+  height 100vh
+  background #efefef
+  z-index 4
+  visibility hidden
+  opacity 0
+  transition(all .3s ease)
+  +for_breakpoint(verticlaire)
+    background white
+  &.show
+    visibility visible
+    opacity .8
+
+#fixed-claire-face
+  visibility hidden
+  opacity 0
+  transition(all .3s ease)
+  position fixed
+  bottom 50px
+  left 50%
+  transform(translate(-50%, 0))
+  z-index 100
+  height 150px
+  width 150px
+  border-radius(100%)
+  background-image url('../images/claire_logo.svg')
+  background-size 100px
+  background-repeat no-repeat
+  background-position center top 20px
+  +for_breakpoint(verticlaire)
+    &.show, &.no-entries
+      visibility visible
+      opacity 1
+
+.claire-face
+  position relative
+
+.demo-mode
+  position absolute
+  padding 2px 5px
+  background $pink4
+  color white
+  font-size .9em
+  font-weight 700
+  font-style italic
+  border-radius(5px 0 5px 0)
+  .claire-face &
+    right -40px
+    left auto
+    top -5px
+  .mobile-only &
+    width 100px
+    right 0
+    left 0
+    top 2px
+    text-align center
+    margin 0 auto
+
+#output
+  width 100vw
+  padding-left 2.5vw
+  padding-right 2.5vw
+  transition(padding .3s ease)
+  display block
+  padding-bottom 50px
+  unselectable()
+
+.button
+  &.help:after
+    transform(translate(-52%, -52%) scale(1.25))
+    content $icon-help
+    transition(all .3s ease)
+  &.help.rotate:after
+    transform(translate(-52%, -52%) scale(-1.25, 1.25)) // rotate(179deg))
+
+  &.check:after
+    transform(translate(-47%, -47%))
+    content $icon-check
+
+  &.copy:after
+    content $icon-copy
+    +for_breakpoint(tablet-plus)
+      transform(translate(-50%, -55%))
+
+  &.cross:after // might end up not using this
+    content $icon-cross
+
+  &.zoom:after
+    content $icon-zoom
+    +for_breakpoint(tablet-plus)
+      transform(translate(-50%, -55%))
+
+  &.minus:after
+    transform(translate(-51%, -42%))
+    content $icon-minus
+    +for_breakpoint(tablet-plus)
+      transform(translate(-50%, -48%))
+
+  &.magic:after
+    transform(translate(-45%, -45%))
+    content $icon-magic
+    +for_breakpoint(tablet-plus)
+      transform(translate(-45%, -48%))
+
+  &.copy, &.zoom
+    top 10px // align with baseline of first output line
+    z-index 0
+    position relative
+    display inline-block
+    font-size .9em
+    +for_breakpoint(tablet-plus)
+      width 30px
+      height 30px
+      font-size .8em
+    +for_breakpoint(verticlaire)
+      top 0
+    &.active
+      transform(scale(1.1))
+      cursor pointer
+
+  &.copy.active
+    background $orange3
+  &.zoom.active
+    background $purple3
+
+.table-wrapper // enforce percentage widths while preserving block display of parent if applicable
+  width 100%
+  display table
+
+.paragraph
+  font-size 1.25rem
+  width 100%
+  display block
+  border-bottom 1px solid #f4f4f4
+  &-center // only for mobile
+    display none
+    padding 10px 20px
+  &-left, &-stub, &-right
+    display table-cell
+    padding 10px 20px
+  &-left
+    width 40%
+    font-style italic
+    font-weight 100
+    -webkit-text-stroke-width 0.1px
+  &-right
+    width 51%
+  &-stub
+    width 4.5%
+    position relative
+    padding 10px 0px // originally not here
+    text-align center // center the zoom & copy buttons in their cells
+    > *
+      text-align left
+    .copybox, .successbox
+      font-size .8rem
+      font-style italic
+      position absolute
+      padding 10px
+      left 0
+      background #efefef
+      color #777
+      border-radius(5px)
+      display block
+    .successbox
+      transform(translate(-102%, -90%)) // vertical center around copyButton)
+      text-align center
+      width 175px
+      height 40px
+    .copybox
+      opacity 0
+      transform(translate(-102%, -75%)) // vertical center around copyButton)
+      width 200px
+      height 66px
+      transition(all .3s ease)
+      margin-left 10px
+      &.visible
+        margin-left 0
+        opacity 1
+      input
+        margin-top 10px
+        width 100%
+        border none
+        selectable()
+  +for_breakpoint(tablet)
+    &-left
+      width auto
+    &-right
+      width 54%
+    &-stub
+      width 6%
+  +for_breakpoint(verticlaire) // make paragraphs like bubbles
+    width 90%
+    margin 0 auto
+    border-bottom 1px solid white
+    position relative
+    z-index 0
+    &-left
+      broken-border(20px 20px 0px 0px)
+      margin-bottom -1px // prevent border overlap
+      padding-top 5px
+      padding-bottom 5px
+      .mobile-only // zoom button for mobile view
+        position absolute
+        // TOP CENTER
+        //top 0
+        //left 50%
+        //transform(translate(-50%, -45%))
+        // RIGHT MIDDLE
+        right 0
+        bottom 0
+        transform(translate(50%, 60%))
+        z-index 100
+    &-center
+      transition(all .3s ease)
+      broken-border(0)
+      border-bottom-color white !important // prevent border overlap
+      padding 0
+      & > div // for mobile
+        transition(all .3s ease)
+        display block
+        padding 0 5px
+        overflow-y scroll
+        -webkit-overflow-scrolling touch
+      .slide-down
+        max-height 50vh // http://stackoverflow.com/a/8331169
+      .slide-up
+        max-height 0
+    &-right
+      margin-top -2px // avoid border clash
+      broken-border(0px 0px 20px 20px)
+      padding-top 15px
+      padding-bottom 20px
+    &-left, &-right, &-center
+      border 1px solid #e0e0e0
+      width 100%
+      display block
+    &-stub
+      display none
+  +for_breakpoint(narrow)
+    &-left
+      font-size 1rem
+
+.sentence
+  display inline // don't line-break at ends of sentences
+  &:first-child
+    display none // avoid indent caused by empty 0th sentence
+
+.syntagma
+  cursor default
+  display inline-block
+  position relative
+  margin 15px 0 0 0
+  +for_breakpoint(verticlaire)
+    margin-top 5px
+  .chunk
+    font-family $fanwood
+    font-size 1.75rem
+    +for_breakpoint(verticlaire)
+      font-size 1.5rem
+  &.afterspace
+    margin-right 6px
+  &.flagged
+    color $purple4
+  &.multiple-choice
+    color $orange4
+  .button.zoom.single
+    position absolute
+    z-index 9
+    border .5px solid white
+    height 30px
+    width 30px
+    top 90%
+    left 50%
+    transform(translate(-50%, 0))
+    background $purple3
+    +for_breakpoint(verticlaire) // no single-syntagma zoom button in vertical view
+      display none
+    &:hover
+      background $purple4
+  .label
+    font-family $lato
+    position absolute
+    z-index 10
+    white-space nowrap // don't break the line!
+    left 0
+    top -50%
+    +for_breakpoint(verticlaire)
+      z-index 101 // overlap the "is-correct" check mark
+      top -66%
+    .category
+      font-weight 700
+      font-size .7em
+      font-variant small-caps
+      color #999
+    .tense
+      display inline
+      position relative
+      margin 10px 3px
+      padding 2px 5px
+      background #aaa
+      color white
+      font-size .6em
+      font-style italic
+      border-radius(5px 0 5px 0)
+  .underline
+    position relative
+    &:after
+      content ' '
+      width 100%
+      background #ccc
+      height 1px
+      position absolute
+      left 0
+      bottom 0
+    + .underline:after
+      bottom -3px
+    + .underline + .underline:after
+      bottom -6px
+    + .underline + .underline + .underline:after
+      bottom -9px
+    + .underline + .underline + .underline + .underline:after
+      bottom -12px
+
+.highlight
+  border-radius(5px)
+  position absolute
+  top 50%
+  left 50%
+  transform(translate(-50%, -50%))
+  border 1px solid white
+  width calc(100% \+ 10px)
+  height calc(100% \+ 6px)
+  z-index -3
+  &.active
+    z-index -1
+    background-color #f5f5f5
+  &.subject
+    z-index -2
+    background-color $green1
+  &.object
+    z-index -2
+    background-color $pink1
+  &.dependent
+    z-index -2
+    background-color $orange1
+
+.annotation-block
+  position absolute
+  -webkit-overflow-scrolling touch
+  overflow-x hidden
+  left 0
+  top 100%
+  width 520px
+  transform(translate(-50%, 0))
+  z-index 10
+  -webkit-animation bounce .2s 1 ease
+  animation bounce .2s 1 ease
+
+.annotation
+  color black
+  font-size .8rem
+  background #f4f4f4
+  border-radius(0 0 20px 20px)
+  width 500px
+  padding-bottom 20px
+  margin 10px 0
+  position relative
+  &:first-child
+    margin-top 0px
+  h1
+    color white
+    font-size 1.5rem
+    font-weight 100
+    -webkit-text-stroke-width 0.2px
+    margin 0
+    padding .4em 1em
+    background $purple5
+    &.multiple-choice
+      background $orange4
+  .explanation
+    font-size 1rem
+    padding 0 1.5em
+    font-weight 300
+    font-style italic
+    line-height 1.5em
+    i
+      font-style normal
+    code
+      font-style normal
+      font-family $mono
+      font-size .9em
+      border-radius(3px)
+      padding 2px 4px
+      color $purple4
+      background $purple1
+    &.multiple-choice code
+      color $orange4
+      background $orange1
+    ul, ol
+      margin 10px 0 15px 16px
+    ul
+      list-style disc inside none
+      li
+        font-size .95em
+        list-style disc inside none
+        display list-item
+      ul li // Double nested lists
+        list-style circle inside none
+    ol
+      padding-left 20px
+      li
+        font-size .95em
+        list-style-type decimal
+        display list-item
+  li
+    display table
+    width 100%
+    font-size 1rem
+    & h3
+      display table-cell
+      vertical-align top
+      width 30%
+      font-variant small-caps
+      font-weight 900
+      color #777
+      padding-right 10px
+      text-align right
+      & + div
+        font-family $fanwood
+        font-size 1.2rem
+        display table-cell
+        width 70%
+        vertical-align top
+        padding-top 2px // to align perfectly with the heading
+        padding-right 10px
+        ul li
+          font-family $fanwood
+          font-size 1.2rem
+        &.categories
+          ul li
+            font-family $lato
+            font-size .95rem
+            font-style italic
+          .number  // this is the number bubble that shows how many corrections
+            border-radius(100%)
+            width 20px
+            height 20px
+            display inline-block
+            position relative
+            top 3.5px
+            margin-left 5px
+            background-color $purple2
+            color black
+            &.medium
+              background-color $orange2
+            &.high
+              background-color $pink2
+            & > *
+              position absolute
+              top 50%
+              left 50%
+              transform(translate(-50%, -50%))
+              font-size .9em
+              font-weight 700
+              font-style normal
+
+.paragraph-annotations .annotation:first-child li:not(.category)
+  padding-top 5px
+  padding-bottom 5px
+
++for_breakpoint(verticlaire)
+  .paragraph-center .annotation
+    margin 5px auto
+    width 80%
+    background none
+    padding-bottom 0
+    +for_breakpoint(narrow)
+      width 90%
+    h1
+      padding 10px 0 0
+      background none
+      font-size 1.25rem
+      color $purple3
+      font-weight 300
+      border-bottom 1px solid $purple3
+      &.multiple-choice
+        color $orange3
+        border-color $orange3
+    .explanation
+      font-size .95rem
+      padding 0
+      margin 5px 0
+    li h3, li h3 + div, li h3 + div ul li
+      font-size 1rem
+    .categories li
+      font-size .8rem
+      .number  // this is the number bubble that shows how many corrections
+        width 15px
+        height 15px
+        top 3.5px
+        margin-left 5px
+        & > *
+          font-size .8em
+
++for_breakpoint(narrow)
+  .paragraph-center .annotation li h3
+    font-size .85rem
+    font-weight 500
+    & + div
+      padding-top .5px
+
+.annotation li h3 + div // for some reason, this won't compile if it's included above
+  selectable()
+
+.add
+  border-radius(5px)
+  background $purple2
+  padding 0 3px
+
+.del
+  border-radius(5px)
+  background $pink1
+  color $pink4
+  text-decoration line-through
+
+.no-article
+  color $orange4
+  text-decoration underline
+
+.is-correct
+  font-family $icons
+  color $green4
+  z-index 0
+  position relative
+  display inline-block
+  font-size .9em
+  background white
+  padding 0
+  top -2px
+  +for_breakpoint(tablet-plus)
+    top 0px
+  +for_breakpoint(verticlaire)
+    padding 8px
+  &:after
+    content $icon-check
+
+.mobile-only
+  display none
+  +for_breakpoint(verticlaire)
+    display block
+
+// =============================================================================
+// Help section
+// =============================================================================
+
+.arrow
+  color #ababab
+  height 20px
+  width 20px
+  font-family $icons
+  position relative
+  &:after
+    display block
+    position absolute
+    top 65%
+    left 50%
+    transform(translate(-50%, -50%))
+    content $icon-right
+  &.left:after
+    transform(translate(-55%, -50%))
+    content $icon-left
+
+.pointy-hand
+  position absolute
+  bottom 0
+  left 50%
+  transform(translate(-50%, 50%))
+  height 20px
+  width 20px
+  color black
+  z-index 50
+  font-family $icons
+  &:after
+    content $icon-hand
+
+#help
+  position fixed
+  background white
+  bottom 40px
+  padding 30px 10px 40px
+  left 50%
+  transform(translate(-50%, 0))
+  min-width 75%
+  max-width 100%
+  z-index 100
+  overflow-x hidden
+  border-radius(50% 50% 0 0)
+  unselectable()
+  .row
+    text-align center
+    margin 25px 0
+    display table
+    width 100%
+    padding 5px 10px
+    white-space nowrap
+    .left-side
+      text-align right
+    .right-side
+      text-align left
+    .left-side, .right-side
+      display inline-block
+      padding 0 10px
+      width 50%
+      > *
+        vertical-align middle
+        display inline-block
+  .syntagma, .arrow, .mini-annotation
+    display inline-block
+    margin 0 7px
+    .label
+      display block
+    .tense
+      font-weight 400
+      font-size .8rem
+      margin-left 20px
+      &:lang(ml)
+        font-size 1.1rem
+        font-family 'Keraleeyam', serif
+        padding-top .3em
+    .chunk
+      font-weight 200 // if available
+      &:lang(hi)
+        font-family 'Fanwood', 'Fanwood Text', 'Laila', serif
+      &:lang(ml)
+        font-family 'Fanwood', 'Fanwood Text', 'Keraleeyam', serif
+      // CJK FONTS: Mac & Windows should fall back to system default serifs; iOS & Android must @import b/c they only have sans-serif
+      &:lang(jp)
+        font-family 'Fanwood', 'Fanwood Text', 'Kozuka Mincho Pro', 'Hiragino Mincho Pro', 'Hiragino Mincho ProN W3', 'Yu Mincho', 'Hanazono Mincho', serif
+      &:lang(kr)
+        font-family 'Fanwood', 'Fanwood Text', 'Nanum Myeongjo', serif
+      &:lang(zh-CN)
+        font-family 'Fanwood', 'Fanwood Text', 'AdobeFangsongStd-Regular', 'Adobe Fangsong Std R', 'Adobe Fangsong Std', 'FangSong', 'STFangsong', '微软简仿宋字体', '华文仿宋', '仿宋', 'CWTEX仿宋体', 'STFangsong', 'FangSong', 'FangSong_GB2312', 'Songti SC', 'Songti-SC', 'SimSun', 'NSimSun', 'AR PL UMing CN', 'Georgia', serif
+      &:lang(zh-TW)
+        font-family 'Fanwood', 'Fanwood Text', 'MingLiU', 'PMingLiU', 'Songti TC', 'Songti-TC', "AR PL UMing HK", "AR PL UMing TW", 'cwTeXQMing', serif
+  .syntagma.big
+    margin 0
+    .chunk
+      font-size 2.25rem
+      +for_breakpoint(tablet)
+        font-size 1.5rem
+    .button.zoom.single
+      width 20px
+      height 20px
+      top 70%
+      left 52%
+    .pointy-hand
+      bottom -15%
+  .right-side .syntagma.big .button.zoom.single
+    left 48%
+  .mini-annotation
+    width 75px
+    height 50px
+    background #f4f4f4
+    border-radius(0 0 10px 10px)
+    position relative
+    +for_breakpoint(tablet)
+      width 60px
+      height 40px
+    &:before
+      content ' '
+      display block
+      background $purple5
+      position absolute
+      width 100%
+      height 10px
+      top 0
+      left 0
+    &.orange:before
+      background $orange4
+  &-button-row
+    p
+      margin 0 20px
+      white-space pre
+      font-style italic
+      plain_intl_sans_fallback()
+    .button
+      top 0
+
++for_breakpoint(tablet)
+  #help
+    .row
+      margin 10px 0
+    &-annotation-row .pointy-hand
+      bottom 4px
+    &-syntagma-two .syntagma .chunk
+      font-size 1rem //!important
+    &-button-row p
+      font-size .8rem
+  @media screen and (-webkit-max-device-pixel-ratio: 1) // Android tablets
+    #help
+      .tense
+        margin-left 25px !important
+        top 15px
+      &-syntagma-one .chunk, &-annotation-row .chunk:not(:lang(jp))
+        font-size 2rem !important
+      &-syntagma-two .chunk
+        font-size 1.5rem !important
++for_breakpoint(verticlaire)
+  #help
+    border-radius(30px 30px 0 0)
+    max-width 90%
+    width 90%
++for_breakpoint(narrow)
+  #help
+    max-width 100%
+    width 100%
+    bottom 30px
+    padding 30px 10px 30px
+    .tense:not(:lang(ml))
+      font-size .7em !important
+      top -10px
+      margin-left 10px !important
+    .chunk:not(:lang(ml))
+      font-size .75em !important
+    .big .chunk
+      font-size .95em !important
+    &-annotation-row
+      margin 0 auto !important
+      width 200px !important
+      > *
+        display table !important
+      .left-side
+        margin 5px auto 0 0
+        .mini-annotation
+          margin-left 0
+      .right-side
+        margin 10px 0 0 auto
+        .mini-annotation
+          margin-right 0
+    &-button-row
+      > *
+        margin 0
+        padding 0 2px !important
+      p
+        font-size .6rem
+        margin 0 5px
+      .button
+        width 25px
+        height 25px
+
+#language-panel
+  overflow-x hidden
+  background $orange1
+  bottom 40px
+  z-index 101
+  border-radius(30px 30px 0 0)
+  +for_breakpoint(verticlaire)
+    a
+      color black
+  +for_breakpoint(narrow)
+    bottom 30px
+
+// =============================================================================
+// Transition effects
+// =============================================================================
+
+.expand // paragraphs
+  &-transition
+    multi-transition("background .2s ease .15s, max-height .3s ease, padding .3s ease, opacity .3s ease .15s")
+    max-height 5000px
+    padding 20px 0
+    +for_breakpoint(verticlaire)
+      padding 20px 10px
+  &-enter
+    background-color #eee
+  &-enter, &-leave
+    max-height 0px
+    padding 0
+    opacity 0
+    +for_breakpoint(verticlaire)
+      background white
+      padding 0 10px
+
+.expand-up // for the help section
+  &-transition
+    multi-transition("height .75s ease, max-height .75s ease, opacity .75s ease")
+    max-height 1000px
+    overflow-y hidden
+  &-enter, &-leave
+    max-height 0px
+    opacity 0
+  &-leave
+    multi-transition("height .3s ease, max-height .3s ease, opacity .3s ease")
+
+.float-up // syntagma zoom button
+  &-transition
+    transition(all .3s ease)
+    margin-top 0
+    opacity 1
+  &-enter, &-leave
+    margin-top 5px
+    opacity 0
+
+.float-down // syntagma label
+  &-transition
+    transition(all .3s ease)
+    margin-top 0
+    opacity 1
+  &-enter, &-leave
+    margin-top -5px
+    opacity 0
+
+.float-left // other popup windows
+  &-transition
+    transition(all .3s ease)
+    margin-left 0
+    opacity 1
+  &-enter, &-leave
+    margin-left 10px
+    opacity 0
+
+.float-right // other popup windows
+  &-transition
+    transition(all .3s ease)
+    margin-right 0
+    opacity 1
+  &-enter, &-leave
+    margin-right 10px
+    opacity 0
+
+.button.loading
+  color $green2
+  background white
+  &:after // adapted from http://chadkuehn.com/animated-font-spinners/
+    position absolute
+    top 13%
+    left 25%
+    -webkit-animation spin 1000ms infinite linear
+    animation spin 1000ms infinite linear
+
+@keyframes spin
+  0%
+    transform(rotate(0deg))
+  100%
+    transform(rotate(359deg))
+
+@keyframes bounce
+  0%
+    transform(translate(-50%, 0) scale(1))
+    opacity: 0
+  25%, 75%
+    transform(translate(-50%, 0) scale(1.02))
+  50%
+    transform(translate(-50%, 0) scale(1.04))
+  100%
+    transform(translate(-50%, 0) scale(1))
+    opacity 1

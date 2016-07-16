@@ -1,0 +1,20 @@
+//output: oldios.html, pretty: true
+
+doctype html
+html
+  head
+    include ./head.jade
+    link(rel='stylesheet', type='text/css', href='css/landing.css')
+  body
+    .vert-center-wrapper
+      .content
+        #hello
+          #hello-left Hello, I&rsquo;m
+          #hello-center.claire-face
+          #hello-right
+            #top-bubble.bubble.link-bubble 
+              | Please update your device 
+              br 
+              | to the latest version of iOS.
+        
+  include ./footer.jade

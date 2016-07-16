@@ -1,0 +1,136 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:100italic,300italic,700italic,100,300,900");
+@import url("https://fonts.googleapis.com/css?family=Fanwood+Text:400,400italic");
+@import url("https://fonts.googleapis.com/css?family=Laila:400&subset=devanagari");
+@import url("https://fonts.googleapis.com/css?family=Yantramanav:300,900&subset=devanagari");
+@import url("https://fonts.googleapis.com/earlyaccess/notosansmalayalamui.css");
+@font-face {
+  font-family: 'fontello';
+  src: url("../fonts/icons/fontello.eot?7377288");
+  src: url("../fonts/icons/fontello.eot?7377288#iefix") format('embedded-opentype'), url("../fonts/icons/fontello.woff2?7377288") format('woff2'), url("../fonts/icons/fontello.woff?7377288") format('woff'), url("../fonts/icons/fontello.ttf?7377288") format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Keraleeyam';
+  src: url("../fonts/ml/Keraleeyam.eot");
+  src: local('Keraleeyam'), url("../fonts/ml/Keraleeyam.eot?#iefix") format('embedded-opentype'), url("../fonts/ml/Keraleeyam.woff") format('woff'), url("../fonts/ml/Keraleeyam.ttf") format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+  unicode-range: U+000D-0D7E;
+}
+@font-face {
+  font-family: "Hanazono Mincho";
+  src: url("../fonts/jp/HanaMinA.eot"); /* IE9 */
+  src: local('HanaMinA'), url("../fonts/jp/HanaMinA.eot?#iefix") format("embedded-opentype"), url("../fonts/jp/HanaMinA.woff") format("woff"), url("../fonts/jp/HanaMinA.ttf") format("truetype"); /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */ /* iOS 4.1- */
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: "cwTeXQMing";
+  src: url("../fonts/zh/cwTeXQMing-Medium.eot"); /* IE9 */
+  src: url("../fonts/zh/cwTeXQMing-Medium.eot?#iefix") format("embedded-opentype"), url("../fonts/zh/cwTeXQMing-Medium.woff") format("woff"), url("../fonts/zh/cwTeXQMing-Medium.ttf") format("truetype"), url("../fonts/zh/cwTeXQMing-Medium.svg#cwTeXQMing") format("svg"); /* iOS 4.1- */
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: "AR PL UMing CN";
+  src: url("../fonts/zh/uming0.eot"); /* IE9 */
+  src: url("../fonts/zh/uming0.eot?#iefix") format("embedded-opentype"), url("../fonts/zh/uming0.woff") format("woff"), url("../fonts/zh/uming0.ttf") format("truetype"), url("../fonts/zh/uming0.svg#AR PL UMing CN") format("svg"); /* iOS 4.1- */
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: "Nanum Myeongjo";
+  src: url("../fonts/kr/NanumMyeongjo-Regular.eot"); /* IE9 */
+  src: local("Nanum Myeongjo"), url("../fonts/kr/NanumMyeongjo-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/kr/NanumMyeongjo-Regular.woff") format("woff"), url("../fonts/kr/NanumMyeongjo-Regular.ttf") format("truetype"), url("../fonts/kr/NanumMyeongjo-Regular.svg#Nanum Myeongjo") format("svg"); /* iOS 4.1- */
+  font-style: normal;
+  font-weight: normal;
+}
+p.center {
+  text-align: center;
+}
+#date-selector select {
+  margin: 0 5px;
+}
+ul.considerations {
+  margin: 0 auto;
+  width: 650px;
+  list-style-type: disc !important;
+  text-align: center;
+  padding: 0 50px;
+}
+ul.considerations li {
+  text-align: left;
+  font-size: 0.9rem;
+  margin: 5px 0;
+  display: list-item !important;
+  list-style-type: disc !important;
+}
+a.date-nav {
+  background: #fff5d6;
+  color: #eda14a;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 3px 10px 5px;
+  cursor: pointer;
+}
+a.date-nav:hover {
+  font-weight: 700;
+  color: #eda14a;
+}
+.paragraph .admin-left {
+  -webkit-touch-callout: all; /* iOS Safari */
+  -webkit-user-select: all; /* Chrome/Safari/Opera */
+  -khtml-user-select: all; /* Konqueror */
+  -moz-user-select: all; /* Firefox */
+  -ms-user-select: all; /* IE/Edge */
+  -webkit-user-select: all; /* disable selection/Copy of UIWebView */
+  -webkit-touch-callout: all; /* disable the IOS popup when long-press on a link */
+  width: 35%;
+  display: table-cell;
+  padding: 0 10px;
+  font-style: italic;
+  font-weight: 100;
+  -webkit-text-stroke-width: 0.1px;
+}
+.paragraph .admin-center {
+  width: 35%;
+  display: table-cell;
+  padding: 0 10px;
+  font-family: 'Fanwood Text', 'Fanwood', serif;
+}
+.paragraph .admin-right {
+  width: 30%;
+  display: table-cell;
+  padding: 0 5px;
+}
+.paragraph .admin-right .human-correction {
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+.paragraph .admin-right .make-suggestion {
+  font-size: 1rem;
+  font-family: 'Lato', 'Lucida Sans Unicode', 'Lucida Sans', 'Helvetica Neue', 'Helvetica', sans-serif;
+  font-style: italic;
+  resize: vertical;
+  vertical-align: middle;
+  padding: 5px;
+  width: 100%;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  border-color: #ccc;
+}
+h3.table-heading {
+  font-family: 'Lato', 'Lucida Sans Unicode', 'Lucida Sans', 'Helvetica Neue', 'Helvetica', sans-serif;
+  background: #ece9ff;
+  color: #9081de;
+  font-weight: 400;
+  padding: 5px 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  font-style: normal;
+}

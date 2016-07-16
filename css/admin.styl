@@ -1,0 +1,74 @@
+// out: admin.css
+
+@import "variables.styl"
+
+p.center
+  text-align center
+
+#date-selector
+  select
+    margin 0 5px
+
+ul.considerations
+  margin 0 auto
+  width 650px
+  list-style-type disc !important
+  text-align center
+  padding 0 50px
+  li
+    text-align left
+    font-size .9rem
+    margin 5px 0
+    display list-item !important
+    list-style-type disc !important
+
+a.date-nav
+  background $orange1
+  color $orange4
+  border-radius(5px)
+  padding 3px 10px 5px
+  cursor pointer
+  &:hover
+    font-weight 700
+    color $orange4
+
+.paragraph
+  .admin-left
+    selectable()
+    width 35%
+    display table-cell
+    padding 0 10px
+    font-style italic
+    font-weight 100
+    -webkit-text-stroke-width 0.1px
+  .admin-center
+    width 35%
+    display table-cell
+    padding 0 10px
+    font-family $fanwood
+  .admin-right
+    width 30%
+    display table-cell
+    padding 0 5px
+    .human-correction
+      font-size .95rem
+      margin-bottom 10px
+    .make-suggestion
+      font-size 1rem
+      font-family $lato
+      font-style italic
+      resize vertical
+      vertical-align middle
+      padding 5px
+      width 100%
+      border-radius(5px)
+      border-color #ccc
+
+h3.table-heading
+  font-family $lato
+  background $purple1
+  color $purple4
+  font-weight 400
+  padding 5px 10px
+  border-radius(10px)
+  font-style normal

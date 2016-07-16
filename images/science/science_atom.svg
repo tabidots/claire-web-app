@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 17.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="295px"
+	 height="151px" viewBox="0 0 295 151" enable-background="new 0 0 295 151" xml:space="preserve">
+<g id="_x31_._Scribble">
+</g>
+<g id="_x32_._Tokens">
+</g>
+<g id="_x33_._CoreNLP">
+	<g>
+		<path fill="#EFEFEF" d="M295,137.726c0,7.331-5.943,13.274-13.274,13.274H13.274C5.943,151,0,145.057,0,137.726V13.274
+			C0,5.943,5.943,0,13.274,0h268.451C289.057,0,295,5.943,295,13.274V137.726z"/>
+		<rect x="4.316" y="5.816" fill="none" width="291.958" height="146.841"/>
+		<text transform="matrix(1 0 0 1 4.3164 14.6485)" opacity="0.1"><tspan x="0" y="0" font-family="'Inconsolata'" font-size="13.2745">1010101010101010011101101010111101011010101</tspan><tspan x="0" y="15.929" font-family="'Inconsolata'" font-size="13.2745">0101010100111011010101111010110101010101010</tspan><tspan x="0" y="31.858" font-family="'Inconsolata'" font-size="13.2745">1001110110101011110101101010101010101001110</tspan><tspan x="0" y="47.788" font-family="'Inconsolata'" font-size="13.2745">1101010111101011010101010101010011101101010</tspan><tspan x="0" y="63.717" font-family="'Inconsolata'" font-size="13.2745">1111010110101010101010100111011010101111010</tspan><tspan x="0" y="79.646" font-family="'Inconsolata'" font-size="13.2745">1101010101010101001110110101011110101101010</tspan><tspan x="0" y="95.576" font-family="'Inconsolata'" font-size="13.2745">1010101010011101101010111101011010101010101</tspan><tspan x="0" y="111.505" font-family="'Inconsolata'" font-size="13.2745">0100111011010101111010110101010101010100111</tspan><tspan x="0" y="127.435" font-family="'Inconsolata'" font-size="13.2745">0110101011110101101010101010101001110110101</tspan></text>
+		<g>
+			<circle fill="#8EC146" cx="145.957" cy="74.685" r="19.274"/>
+			<g>
+				<g>
+					<path fill="none" stroke="#000000" stroke-miterlimit="10" d="M136.483,44.304c0,0,6.207-57.495,14.7-28.747
+						s9.976,126.75-5.227,126.75c-11.891,0-9.474-42.84-9.474-42.84"/>
+				</g>
+				<circle fill="#EDA14A" cx="155.262" cy="39.245" r="7.028"/>
+			</g>
+			<g>
+				<path fill="none" stroke="#000000" stroke-miterlimit="10" d="M164.871,48.629c0,0,52.041-25.218,32.168-2.776
+					S81.427,122.606,80.463,114.629c-0.919-7.603,41.912-39.788,41.912-39.788"/>
+			</g>
+			<circle fill="#EDA14A" cx="107.574" cy="104.011" r="7.028"/>
+			<g>
+				<path fill="none" stroke="#000000" stroke-miterlimit="10" d="M114.864,64.32c0,0-37.672-25.075-31.302-32.754
+					c7.445-8.975,149.077,98.771,117.864,87.352c-26.13-9.56-38.902-18.385-38.902-18.385"/>
+			</g>
+			
+				<ellipse transform="matrix(0.5796 -0.8149 0.8149 0.5796 -1.3311 191.3671)" fill="#EDA14A" cx="184.807" cy="96.974" rx="7.028" ry="7.496"/>
+		</g>
+	</g>
+</g>
+<g id="_x34_._Dep_Parse">
+</g>
+<g id="_x35_._Wikipedia">
+</g>
+<g id="_x36_._Global">
+</g>
+<g id="_x37_._Ear">
+</g>
+<g id="_x38_._Syntagmas">
+</g>
+<g id="_x39_._Rules">
+</g>
+<g id="_x31_0._Annotations">
+</g>
+<g id="_x31_1._Correct_sent">
+</g>
+<g id="_x31_2._Light_bulb">
+</g>
+<g id="Text" display="none">
+</g>
+<g id="Arrows" display="none">
+</g>
+</svg>

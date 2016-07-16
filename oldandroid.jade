@@ -1,0 +1,32 @@
+//output: oldandroid.html, pretty: true
+
+doctype html
+html
+  head
+    include ./head.jade
+    link(rel='stylesheet', type='text/css', href='css/landing.css')
+  body
+    .vert-center-wrapper
+      .content
+        #hello
+          #hello-left Hello, I&rsquo;m
+          #hello-center.claire-face
+          #hello-right
+            .bubble#no-old-android
+              div
+                .android
+                  .version 4.2 / 4.3
+                  img(src='images/other_logos/android.png')
+                .icon.plus
+                img(src='images/other_logos/android_browser.png')
+                .icon.cross
+              div
+                .android
+                  .version 4.2 / 4.3
+                  img(src='images/other_logos/android.png')
+                .icon.plus
+                a(href='market://details?id=com.android.chrome&hl=en', target="_top")
+                  img(src='images/other_logos/chrome.png')
+                .icon.check
+        
+  include ./footer.jade

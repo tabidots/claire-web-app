@@ -1,0 +1,273 @@
+// out: common.css
+
+@import "variables.styl"
+
+*
+  -webkit-tap-highlight-color rgba(0,0,0,0)
+  box-sizing border-box
+
+textarea, input, button
+  &:active, &:focus
+    outline 0px !important
+    -webkit-appearance none
+
+body, html
+  margin 0
+  padding 0
+  height 100vh
+  //width 100vw // changed to app page only; otherwise, strange problems on about page
+  // Setting any non-zero height on iPad & iPhone adds extra scrollable space, even without content
+  @media all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait) and (-webkit-min-device-pixel-ratio: 2)
+    height 0px // iPad portrait
+  @media all and (device-width: 768px) and (device-height: 1024px) and (orientation:landscape) and (-webkit-min-device-pixel-ratio: 2)
+    height 0px // iPad landscape
+  @media screen and (device-aspect-ratio: 40/71) and (-webkit-min-device-pixel-ratio: 2)
+    height 0px // iPhone 5
+  @media only screen and (device-aspect-ratio : 375/667) and (-webkit-min-device-pixel-ratio: 2)
+    height 0px // iPhone 6 - http://stackoverflow.com/questions/25759046/iphone-6-and-6-plus-media-queries
+
+body
+  font-family $lato
+  font-weight 300
+  font-size 1rem
+  line-height 1.5
+  overflow-x hidden
+
+a
+  text-decoration none
+  color $purple4
+  footer &
+    -webkit-text-stroke-width 0.3px
+
+  &:not(.button):hover, &:not(.button).active
+    color $green4
+  &:not(.button):active
+    color $orange4
+
+ul, li
+  list-style-type none
+  margin 0
+  padding 0
+
+footer
+  position fixed
+  z-index 10
+  bottom 0px
+  height 40px
+  width 100%
+  text-align center
+  color white
+  font-weight 100
+  background-color $purple6
+  -webkit-text-stroke-width 0.1px
+  unselectable()
+  p
+    margin 0
+    width 100%
+    position absolute
+    top 50%
+    left 50%
+    transform(translate(-50%, -50%))
+  +for_breakpoint(verticlaire)
+    font-size .75rem
+    height 30px
+  +for_breakpoint(narrow)
+    .extra
+      display none
+  +for_breakpoint(mobile)
+    font-size .7rem
+    height 30px
+
+.claire-face
+  background-image url('../images/claire_logo.svg')
+  background-size contain
+  background-repeat no-repeat
+  width 200px
+  height (@width * 7 / 6)
+
+.icon // used in annotations and some parts of the markdown texts also
+  font-family $icons
+  font-style normal
+  margin-left .5em
+  display inline
+  &.check:after
+    color $green4
+    content $icon-check
+  &.cross:after
+    color $purple4
+    content $icon-cross
+
+.bubble
+  padding 20px 35px 25px
+  text-align center
+  border 1px solid #ccc
+  broken-border(20px)
+  font-weight 100
+
+.button
+  border-radius(50%)
+  font-family $icons
+  -webkit-font-smoothing antialiased
+  -moz-osx-font-smoothing grayscale
+  font-style normal
+  width 40px
+  height 40px
+  display table-cell
+  font-size 20px
+  color white
+  position absolute
+  z-index 10
+  cursor pointer
+  transition(all .2s ease)
+  &:after
+    position absolute
+    top 50%
+    left 50%
+    transform(translate(-50%, -50%))
+
+  &.up
+    left 50%
+    top 0
+    transform(translate(-50%, -50%))
+    &.active, a.active .bubble & // &:hover, &:active, a:hover .bubble &, a:hover:active .bubble &
+      transform(@transform scale(1.1))
+    &:after
+      content $icon-up
+      transform(translate(-50%, -55%))
+
+  &.right
+    top 50%
+    right 0
+    transform(translate(50%, -50%))
+    &.active, a.active .bubble &
+      transform(@transform scale(1.1))
+    &:after
+      content $icon-right
+      transform(translate(-40%, -45%))
+
+  &.left
+    top 50%
+    left 0
+    transform(translate(-50%, -50%))
+    &.active, a.active .bubble &
+      transform(@transform scale(1.1))
+    &:after
+      content $icon-left
+      transform(translate(-60%, -45%))
+
+  &.down
+    left 50%
+    bottom 0
+    transform(translate(-50%, 50%))
+    &.active, a.active .bubble &
+      transform(@transform scale(1.1))
+    &:after
+      content $icon-down
+
+  &.orange
+    background $orange2
+    &.active, a.active .bubble &
+      background $orange3
+
+  &.purple
+    background $purple2
+    &.active, a.active .bubble &
+      background $purple3
+
+  &.pink
+    background $pink2
+    &.active, a.active .bubble &
+      background $pink3
+
+  &.green
+    background $green2
+    &.active, a.active .bubble &
+      background $green3
+
+a .bubble
+  color black
+
+.no-fouc
+  display none
+
+#language-panel
+  position fixed
+  left 50%
+  max-width 95%
+  padding 5px 0
+  transform(translate(-50%, 0))
+  margin -2px auto 0
+  text-align center
+  plain_intl_sans_fallback() // for Malayalam, Simp Chinese, Trad Chinese
+  a
+    color #999
+    padding 5px
+    transition(all .3s ease)
+    &.active
+      background $orange3
+      color white
+      font-weight 700
+      border-radius(5px)
+      transition(all 0s)
+  .full, .short
+    white-space nowrap
+  .full
+    margin 0 20px
+    font-size .9rem
+  .short a
+    font-size .8rem
+  +for_breakpoint(landscape)
+    .full
+      display inline
+      a
+        width auto
+    .short
+      display none
+  +for_breakpoint(small-desktop)
+    width auto
+    max-width 95%
+    padding 0 0 3px 0
+    .full
+      display none
+    .short
+      margin 0 25px
+      display inline-flex
+      a
+        padding 5px 0
+        font-size .9rem
+        width 35px
+        justify-content space-around
+  +for_breakpoint(portrait)
+    width auto
+    max-width 95%
+    padding 3px 0 1px
+    .full
+      display none
+    .short
+      margin 0 20px
+      display inline-flex
+      a
+        padding 5px 0
+        font-size 1rem
+        width 40px
+        justify-content space-around
+  +for_breakpoint(narrow)
+    margin -5px 2px 0
+    .short a
+      width 30px
+      font-size .6rem
+  +for_breakpoint(mobile)
+    .short a
+      margin 0 1px
+      width 22px
+
+// Multi-lingual defaults for language panel. Should contain only sans-serif system defaults.
+// Also, reset "default" Malayalam font to system default, since the language panel does not use the "yy" ligature
+:lang(hi), :lang(kr)
+  font-style normal !important
+  -webkit-text-stroke-width 0 !important
+
+:lang(ml), :lang(jp), :lang(zh-CN), :lang(zh-TW)
+  font-family 'Helvetica', 'Arial', sans-serif
+  font-style normal !important
+  -webkit-text-stroke-width 0 !important

@@ -1,0 +1,712 @@
+// out: landing.css
+
+@import "variables.styl"
+
+// =============================================================================
+// General styles
+// =============================================================================
+
+#loading-mask
+  position fixed
+  height 200vh
+  width 100vw
+  background white
+  z-index 100
+  opacity 0
+  transition(all .5s ease)
+  &.show
+    opacity 1
+
+#fullpage
+  transition(opacity .5s ease)
+
+// non-jQuery version of fullPage.js requires manual vert-centering of slides
+.vert-center-wrapper
+  top 0
+  left 0
+  position absolute
+  display table
+  height 100%
+  width 100%
+  padding 3% 4%
+  padding-bottom calc(3% + 40px)
+  +for_breakpoint(verticlaire)
+    padding-top 5%
+    padding-bottom calc(5% + 40px)
+  +for_breakpoint(mobile)
+    padding-bottom calc(5% + 30px)
+  .content
+    position relative
+    display table-cell
+    vertical-align middle
+    text-align center
+    .top, .bottom
+      position absolute
+      transform(translate(-50%, 0))
+    .top
+      top 0px
+      left 50%
+    .bottom
+      bottom 0px
+      left 50%
+
+#top-bubble, #bottom-bubble
+  font-style italic
+  font-weight 100
+  -webkit-text-stroke-width 0.1px // http://stackoverflow.com/questions/9326569/google-webfont-lato-100-and-mobile-safari
+
+.multilingual, .swap-language, .swap-language p
+  font-weight 100
+  &:lang(hi)
+    font-family "Yantramanav", "Kohinoor Devanagari", "Lato"
+  &:lang(ml)
+    font-family "ML-NILA 05", "Rachana", "Meera", "Noto Sans Malayalam", sans-serif
+  plain_intl_sans_fallback()
+
+.swap-language, .swap-language p
+  &:lang(kr)
+    font-family "Nanum Myeongjo"
+
++for_breakpoint(mobile)
+  .button
+    height 30px
+    width 30px
+    font-size 1em
+
+#language-panel
+  top 0
+  border-radius(0 0 30px 30px)
+
+// =============================================================================
+// General text styling
+// =============================================================================
+
+h1
+  font-weight 100
+  -webkit-text-stroke-width 0.1px
+  white-space nowrap
+  position relative
+h2
+  color $orange4
+  font-weight 300
+  margin 0 10px 10px
+  border-bottom 0.5px solid $orange3
+  +for_breakpoint(tablet)
+    font-size 1.25rem
+
+.content.text
+  h1
+    top -20px
+    .line-break
+      display none
+    +for_breakpoint(full)
+      font-size 2.5rem
+    +for_breakpoint(tablet)
+      margin 0 auto
+    +for_breakpoint(verticlaire)
+      line-height 2
+      .line-break
+        display block
+    +for_breakpoint(narrow)
+      font-size 1.5rem
+      font-weight 300
+      -webkit-text-stroke-width 0
+    +for_breakpoint(mobile)
+      font-size 1rem
+  h1, .claire-face
+    display inline-block
+    +for_breakpoint(tablet)
+      display block
+      top 0
+    .swap-language:not(:lang(en)) // hide all non-english ones at first
+      display none
+  .claire-face
+    margin 0 10px 0 0
+    position relative
+    width 125px
+    height (@width * 7 / 6)
+    top 40px
+    &.nudge-left
+      margin 0 10px 0 -15px
+      +for_breakpoint(tablet)
+        margin 0 auto 5px
+    +for_breakpoint(full)
+      height (@width * 7 / 6)
+    +for_breakpoint(tablet)
+      top 0
+      margin 0 auto 5px
+      width 125px
+      height (@width * 7 / 6)
+    +for_breakpoint(mobile)
+      width 100px
+      height (@width * 7 / 6)
+  .promo-text
+    width 80%
+    margin 0 auto
+    padding 10px 10px 40px 10px
+    max-width 800px
+    &:not(:lang(en)) // hide all non-english ones at first
+      display none
+    +for_breakpoint(tablet)
+      padding 10px
+    p
+      font-weight 300
+      -webkit-text-stroke-width 0
+      font-size 1.2rem // non-media query fits Android tablet landscape, too
+      margin 1em auto
+      +for_breakpoint(full)
+        font-size 1.3rem
+      +for_breakpoint(tablet)
+        font-size 1.2rem
+      +for_breakpoint(small-desktop)
+        font-size 1rem
+      +for_breakpoint(verticlaire)
+        font-size 1.1rem
+      +for_breakpoint(narrow)
+        font-size 1rem
+      +for_breakpoint(mobile)
+        font-size .65rem
+        font-weight 300
+      strong
+        color $orange4
+        font-weight 900
+    a.external
+      display inline-block
+      white-space nowrap
+      background $green3
+      color white
+      padding .1em .3em .2em
+      font-weight 900
+      border-radius(5px)
+      transition(all .3s ease)
+      &:after
+        margin-left .3em
+        font-family $icons
+        content $icon-external
+      &.active
+        background $green1
+        color $green4
+
+.emph
+  display inline
+  border-radius(5px)
+  padding 5px 10px 8px
+  font-weight 700
+  margin 0 10px
+  &.pink
+    background $pink1
+    color $pink4
+  &.purple
+    background $purple1
+    color $purple4
+  &.dark-purple
+    background $purple4
+    color white
+
+.correction
+  display inline-block
+  position relative
+  line-height 1.5
+  .added-word
+    display inline-block
+    transform(rotate(-5deg))
+    position relative
+    border-radius(5px)
+    padding 0 10px
+    background $purple4
+    color white
+    font-weight 700
+    top -10px
+    margin 0 10px
+    z-index 10
+    +for_breakpoint(full)
+      top -20px
+  .deleted-word
+    transform(rotate(2deg))
+    position absolute
+    left 25%
+    top 40%
+    color $pink4
+    font-size .9em
+    font-weight 300
+    text-decoration line-through
+
+// =============================================================================
+// Incompatible Android fallback page
+// =============================================================================
+
+#no-old-android
+  > div
+    display table
+    margin 10px auto 40px
+    +for_breakpoint(tablet)
+      margin 10px auto 30px
+  img, .icon
+    height 50px
+    width 50px
+    vertical-align middle
+    margin 0 5px
+    +for_breakpoint(tablet)
+      height 35px
+      width 35px
+  .icon:last-child
+    margin 0 0 0 5px
+  a img // Chrome SVG logo is sized wrongly on old Android??
+    &:hover, &:active
+      transform(scale(1.25, 1.25))
+  .android
+    display inline-block
+    position relative
+  .version
+    position absolute
+    bottom 0
+    left 50%
+    transform(translate(-50%, 100%))
+    padding 0 5px
+    font-size 1rem
+    font-weight 900
+    background #ccc
+    color white
+    border-radius(5px 0 5px 0)
+    +for_breakpoint(tablet)
+      font-size .75rem
+  .icon
+    font-size 2rem
+    font-family $icons
+    display inline-block
+    +for_breakpoint(tablet)
+      font-size 1.5rem
+    &.check:after
+      color $green4
+      content $icon-check
+    &.plus
+      transform(rotate(45deg))
+    &.plus:after
+      color #ccc
+      content $icon-cross
+    &.cross:after
+      color $pink4
+      content $icon-cross
+
+// =============================================================================
+// Initial slide
+// =============================================================================
+
+#hello
+  display table
+  width 100%
+  max-width 1000px
+  margin -25vh auto 0 // footer makes fullpage slide look off-center otherwise
+  white-space nowrap
+  > *
+    display table-cell
+    vertical-align middle
+  &-left
+    width 15%
+    font-family $fanwood
+    font-size 2rem
+    margin-top -.75rem // b/c the Claire logo is not a perfect square
+    margin-right .5em
+  &-center.claire-face
+    background-position center
+  &-right
+    padding 0 20px 0 0
+    #top-bubble
+      width 100%
+      margin -1rem 0 0 0
+      font-size 2rem
+  +for_breakpoint(tablet-plus)
+    &-left, &-right #top-bubble
+      font-size 3vw
+  +for_breakpoint(portrait)
+    width 80%
+    margin -15vh auto 0
+    > *
+      display block
+      width 100%
+    &-left
+      font-size 2rem
+    &-right
+      margin 30px 0 0
+      padding 0
+      #top-bubble
+        font-size 1.2rem
+  +for_breakpoint(mobile)
+    width 100%
+    &-left
+      font-size 7vw
+    &-center
+      width 150px
+      height @width * (7/6)
+      margin 0 auto
+    &-right
+      width 95%
+      margin 5vh auto 0
+      #top-bubble
+        font-size 5vw
+        padding 15px 10px
+        text-align left
+
+#bottom-bubble
+  white-space nowrap
+  background white
+  margin 0 auto 20vh
+  bottom 0
+  font-size 1.5rem
+  .line-break
+    display none
+  +for_breakpoint(tablet-plus)
+    margin 0 auto 15vh
+    font-size 2vw
+  +for_breakpoint(portrait)
+    margin 0 auto
+    font-size 1rem
+    border none
+    .line-break
+      display block
+  +for_breakpoint(mobile)
+    width 100%
+    font-size 4vw
+    padding 0 5px 25px
+
+// =============================================================================
+// Acknowledgments
+// =============================================================================
+
+#acknowledgments
+  ul
+    width 150px
+    display inline-block
+    vertical-align top
+    text-align center
+    border-left 1px solid #f4f4f4
+    &:first-child
+      border none
+    +for_breakpoint(medium)
+      width 200px
+    li
+      margin 0 auto
+      width 75px
+      height 75px
+      position relative
+      font-size .9rem
+      margin-bottom 10px
+      +for_breakpoint(medium)
+        display inline-block
+        margin 0 10px
+      &.font a
+        font-size 1.5rem
+        position absolute
+        top 50%
+        left 50%
+        transform(translate(-50%, -50%))
+      img
+        position absolute
+        top 50%
+        left 0
+        transform(translate(0, -50%))
+        width 100%
+        height auto
+      &:hover, &:active
+        transform(scale(1.25))
+        z-index 10
+        .tooltip
+          image-rendering optimizeSpeed
+          image-rendering -moz-crisp-edges
+          image-rendering -o-crisp-edges
+          image-rendering -webkit-optimize-contrast
+          image-rendering optimize-contrast
+          -ms-interpolation-mode nearest-neighbor
+          opacity 1
+          visibility visible
+          margin 0 0 0 10px
+      .tooltip
+        visibility hidden
+        border .5px solid white
+        transition all .3s ease
+        opacity 0
+        position absolute
+        z-index 20
+        top 50%
+        transform(translate(0, -50%))
+        width 75px
+        padding 2px
+        margin 0px
+        left 100%
+        color white
+        font-size .75rem
+        background $purple4
+        border-radius(5px)
+    &.legal
+      width 450px
+      position relative
+      h2
+        margin 0 0 10px 10px
+      +for_breakpoint(medium)
+        border none
+        width 800px
+        h2
+          margin 0 10px
+      ul
+        border none
+        text-align left
+        width 100%
+        li
+          font-size .75rem
+          left 0
+          padding 0 10px
+          width 100%
+          height auto
+          &:hover, &:active
+            transform(none)
+          +for_breakpoint(medium)
+            width 100%
+            padding 0
+  +for_breakpoint(tablet)
+    width 80vw
+    margin 0 auto
+    ul.legal
+      margin 0
+      width 100%
+      h2
+        display none
+      div#legal-credits
+        margin-top 10px
+        line-height .75rem
+        li
+          font-size .5em
+          margin 0 auto
+          display inline
+    ul
+      width 100%
+      border-left none
+      margin-top 1vh
+      h2
+        font-size 1rem
+        text-align left
+        display inline-block
+        border-bottom none
+        width 20%
+        margin 0
+        vertical-align top
+        padding-top 10px
+      li
+        height 50px
+        width 17%
+        margin 0 0 0 3%
+        &:hover, &:active
+          transform(none)
+          .tooltip
+            margin 20px 0 0 0
+        img
+          height auto
+          max-height 100%
+          width auto
+          max-width 100%
+          left 0
+          top 50%
+          transform(translate(0, -50%))
+        &.font a
+          left 0
+          transform(translate(0, -50%))
+        .tooltip
+          text-align left
+          padding 5px 10px
+          width auto
+          white-space nowrap
+          top 100%
+          left 0
+
+.lato
+  margin-top -2px
+.fanwood
+  font-family $fanwood
+  +for_breakpoint(medium)
+    font-size 1.25rem !important
+
+// =============================================================================
+// "How it works" section
+// =============================================================================
+
+scalable-rotate(arguments)
+  transform(rotate(arguments))
+  &.active
+    transform(rotate(arguments) scale(1.25))
+
+#hiw-aspect-ratio // http://stackoverflow.com/questions/12121090/responsively-change-div-size-keeping-aspect-ratio
+  position relative
+  display inline-block
+  width 90%
+  max-height 80vh // This block should not push the "down" button off the screen at large window sizes
+  max-width 1200px // This block should not appear overly gigantic at large window sizes
+  &:after
+    padding-top 66% // Maintain a 3:2 aspect ratio
+    display block
+    content ''
+  #how-it-works
+    position absolute
+    top 0
+    bottom 0
+    left 0
+    right 0
+    > img
+      position absolute
+    > img:not(.science-arrow)
+      z-index 10
+    #science-scribble
+      left 2%
+      top 15%
+      width 20%
+      scalable-rotate(-8deg)
+    #science-scribble-to-dots
+      left 21.5%
+      top 16%
+      width 4%
+      transform(rotate(0deg))
+    #science-dots
+      left 26.5%
+      top 8%
+      width 18%
+      scalable-rotate(5deg)
+    #science-dots-to-atom
+      left 45.5%
+      top 14%
+      width 4%
+      transform(rotate(0deg))
+    #science-atom
+      left 51%
+      top 8%
+      width 18%
+      scalable-rotate(-3deg)
+    #science-atom-to-globe
+      left 69.5%
+      top 22%
+      width 4%
+      transform(rotate(65deg))
+    #science-globe
+      left 69%
+      top 28%
+      width 10%
+      scalable-rotate(3deg)
+    #science-wiki
+      left 85%
+      top 22%
+      width 5%
+      scalable-rotate(-10deg)
+    #science-wiki-to-globe
+      left 80%
+      top 30%
+      width 4%
+      transform(rotate(150deg))
+    #science-ear
+      left 87%
+      top 32%
+      width 5%
+      scalable-rotate(10deg)
+    #science-ear-to-globe
+      left 81.5%
+      top 38%
+      width 4%
+      transform(rotate(180deg))
+    #science-globe-to-depdots
+      left 80%
+      top 46.5%
+      width 4%
+      transform(rotate(60deg))
+    #science-depdots
+      left 79.5%
+      top 54%
+      width 18%
+      scalable-rotate(1deg)
+    #science-depdots-to-syntagmas
+      left 74%
+      top 61%
+      width 4%
+      transform(rotate(180deg))
+    #science-syntagmas
+      left 53%
+      top 57%
+      width 20%
+      scalable-rotate(-10deg)
+    #science-syntagmas-to-globe
+      left 66%
+      top 48%
+      width 4%
+      transform(rotate(-60deg))
+    #science-syntagmas-to-checklist
+      left 49%
+      top 73%
+      width 4%
+      transform(rotate(160deg))
+    #science-checklist
+      left 32%
+      top 70%
+      width 15%
+      scalable-rotate(3deg)
+    #science-checklist-to-result
+      left 26%
+      top 78%
+      width 4%
+      transform(rotate(190deg))
+    #science-result
+      left 12%
+      top 70%
+      width 18%
+      scalable-rotate(-5deg)
+    #science-result-to-lightbulb
+      left 6%
+      top 68%
+      width 4%
+      transform(rotate(240deg))
+    #science-lightbulb
+      left 2%
+      top 45%
+      width 10%
+      scalable-rotate(5deg)
+
+#hiw-caption-head, #hiw-caption
+  width 40%
+  display block
+  text-align left
+  position absolute
+  left 18%
+#hiw-caption-head
+  top 32%
+#hiw-caption
+  top 42%
+  font-style italic
+  line-height 1.5em
++for_breakpoint(tablet-plus) // so the text always stays in bounds
+  #hiw-caption-head
+    top 28%
+  #hiw-caption
+    top 38%
++for_breakpoint(portrait)
+  #hiw-caption-head // heading goes above graphic in portrait
+    margin 0
+    text-align center
+    top -15%
+    left 0
+    width 100%
+  #hiw-caption // caption goes below graphic in portrait
+    text-align center
+    top 95%
+    left 50%
+    transform(translate(-50%, 0))
+    width 100%
+    max-width 400px
++for_breakpoint(narrow)
+  #hiw-caption-head, #hiw-caption
+    font-size .9em
+
+&.pulsate
+  -webkit-animation pulsate 1s infinite linear
+  animation pulsate 1s infinite linear
+
+@keyframes pulsate
+  0%, 100%
+    opacity 0.4
+    transform(translate(50%, -50%), scale(1))
+  50%
+    opacity 1
+    transform(translate(50%, -50%), scale(1.25))

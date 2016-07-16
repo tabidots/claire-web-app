@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 17.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="335px"
+	 height="171px" viewBox="0 0 335 171" enable-background="new 0 0 335 171" xml:space="preserve">
+<g id="_x31_._Scribble">
+</g>
+<g id="_x32_._Tokens">
+</g>
+<g id="_x33_._CoreNLP">
+</g>
+<g id="_x34_._Dep_Parse">
+	<g>
+		<path fill="#EFEFEF" d="M335,155.887c0,8.347-6.766,15.113-15.113,15.113H15.113C6.766,171,0,164.234,0,155.887V15.113
+			C0,6.766,6.766,0,15.113,0h304.775C328.234,0,335,6.766,335,15.113V155.887z"/>
+		<g>
+			
+				<line fill="none" stroke="#9081DE" stroke-width="4" stroke-miterlimit="10" x1="197.853" y1="60.839" x2="229.87" y2="138.467"/>
+			<path fill="none" stroke="#8EC146" stroke-width="4" stroke-miterlimit="10" d="M198.461,60.605l63.731,41.202
+				c0,0-76.501,0.193-160.48,36.193H71"/>
+			<path fill="none" stroke="#EDA14A" stroke-width="4" stroke-miterlimit="10" d="M229,138h64.815
+				c0-124-128.459-112.06-128.459-112.06"/>
+			
+				<line fill="none" stroke="#FF809E" stroke-width="4" stroke-miterlimit="10" x1="101.801" y1="60.213" x2="165.836" y2="26.407"/>
+			<path fill="none" stroke="#FF809E" stroke-width="4" stroke-miterlimit="10" d="M166.015,138.467"/>
+			<path fill="none" stroke="#9081DE" stroke-width="4" stroke-miterlimit="10" d="M101.801,60.839c0,0,64.213-12.521,64.213,77.628
+				c0,0-51.245-36.31-128.248-36.31"/>
+			
+				<line fill="none" stroke="#EDA14A" stroke-width="4" stroke-miterlimit="10" x1="133.819" y1="102.157" x2="101.712" y2="60.839"/>
+			
+				<line fill="none" stroke="#9081DE" stroke-width="4" stroke-miterlimit="10" x1="165.836" y1="26.407" x2="197.853" y2="60.839"/>
+			<path fill="none" stroke="#9081DE" stroke-width="4" stroke-miterlimit="10" d="M197.853,60.839c0,0-44.538-0.626-160.086,41.318
+				"/>
+			
+				<line fill="none" stroke="#8EC146" stroke-width="4" stroke-miterlimit="10" x1="101.712" y1="60.839" x2="69.695" y2="138.467"/>
+		</g>
+		<g>
+			<circle fill="#9081DE" cx="37.767" cy="102.157" r="12.521"/>
+			<circle fill="#8EC146" cx="69.784" cy="138.467" r="12.521"/>
+			<circle fill="#8EC146" cx="101.712" cy="138.467" r="12.521"/>
+			<circle fill="#FF809E" cx="101.801" cy="60.839" r="12.521"/>
+			<circle fill="#EDA14A" cx="133.819" cy="102.157" r="12.521"/>
+			<circle fill="#EDA14A" cx="165.836" cy="26.407" r="12.521"/>
+			<circle fill="#9081DE" cx="197.853" cy="60.839" r="12.521"/>
+			<circle fill="#9081DE" cx="229.87" cy="138.467" r="12.521"/>
+			<circle fill="#9081DE" cx="293.726" cy="138.467" r="12.521"/>
+			<circle fill="#9081DE" cx="166.015" cy="138.467" r="12.521"/>
+			<circle fill="#8EC146" cx="261.888" cy="102.157" r="12.521"/>
+		</g>
+	</g>
+</g>
+<g id="_x35_._Wikipedia">
+</g>
+<g id="_x36_._Global">
+</g>
+<g id="_x37_._Ear">
+</g>
+<g id="_x38_._Syntagmas">
+</g>
+<g id="_x39_._Rules">
+</g>
+<g id="_x31_0._Annotations">
+</g>
+<g id="_x31_1._Correct_sent">
+</g>
+<g id="_x31_2._Light_bulb">
+</g>
+<g id="Text" display="none">
+</g>
+<g id="Arrows" display="none">
+</g>
+</svg>
