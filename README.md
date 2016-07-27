@@ -34,12 +34,17 @@ In the production version, there is a `/fonts` folder, which contains some heavi
 
 ## Sending your request
 
+If you don't have an API key, sign up for one [here](learnengli.sh/api_signup.html).
+
 Send the following AJAX request in the following form:
 
 ```javascript
-url: "//learnengli.sh:8686",
+url: "//learnengli.sh/api",
 type: "GET",
-data: { text: "I am a cool sentence. I am another cool sentence." }
+data: {
+  key: "YOUR_API_KEY",
+  text: "I am a cool sentence. I am another cool sentence."
+}
 ```
 
 If you encounter problems with special or accented characters, you need to URI-decode the user input string (`decodeURIComponent(userInput)`).
@@ -50,6 +55,7 @@ Note that [vue-resource](https://github.com/vuejs/vue-resource) avoids these iss
 
 Then comes the response. Hopefully it's JSON. If it's not, it is one of the following strings:
 
+- `NEED_API_KEY`: Self-explanatory.
 - `CLAIRE_IS_SLEEPING`: The API server is temporarily down or restarting.
 - `INPUT_TOO_LONG`: Input strings of more than 1000 characters cause the Python CoreNLP wrapper to freeze mysteriously, so I have capped the input at 1000 for now.
 - `INPUT_TOO_SHORT`: A minimum of 3 words is required. This reduces wasteful API calls and forces users (at least somewhat) to type meaningful sentences.

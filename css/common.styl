@@ -271,3 +271,79 @@ a .bubble
   font-family 'Helvetica', 'Arial', sans-serif
   font-style normal !important
   -webkit-text-stroke-width 0 !important
+
+.api-form-page
+  overflow hidden
+  h2
+    color white
+    margin 15px 0 0
+    position relative
+    padding 10px 0
+    font-weight 100
+    background $purple5
+    -webkit-text-stroke-width 0.1px
+  .center
+    width 500px
+    margin 20px auto 0
+    text-align center
+  .claire-face
+    margin 0 auto
+    width 125px
+    height (@width * 7 / 6)
+
+.api-signup-form
+  width 600px
+  margin 30px auto
+  form
+    .row
+      display table
+      width 100%
+      height 42px
+      margin 10px 0
+      label, input
+        display table-cell
+        padding 10px
+        vertical-align top
+      label
+        width 45%
+        text-align right
+      input, select
+        width 100%
+        font-family $lato
+        font-size 1rem
+        font-weight 600
+        background $purple1
+        color $purple4
+        border 1px solid $purple2
+        &:focus
+          background $orange2
+          color black
+      select
+        height 42px
+        &:active, &:focus
+          outline 0px !important
+      input
+        border-radius(5px)
+        position relative
+        -webkit-appearance none
+    input[type=submit]
+      border-radius(5px)
+      background $green4
+      color $green1
+      font-weight 600
+      border 1px solid transparent
+      font-family $lato
+      font-size 1rem
+      padding 8px
+      margin 20px
+      -webkit-appearance none
+      cursor pointer
+      &:hover
+        color white
+
+.fade
+  &-transition
+    transition opacity .5s ease
+    opacity 1
+  &-enter, &-leave
+    opacity 0

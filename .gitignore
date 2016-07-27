@@ -12,6 +12,8 @@ Thumbs.db
 .tar
 .zip
 robots.txt
+api_signup.jade
+api_signup.html
 /fonts/originals
 /fonts/zh
 /fonts/jp

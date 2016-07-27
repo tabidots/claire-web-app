@@ -5,8 +5,8 @@
 @import url("https://fonts.googleapis.com/earlyaccess/notosansmalayalamui.css");
 @font-face {
   font-family: 'fontello';
-  src: url("../fonts/icons/fontello.eot?7377288");
-  src: url("../fonts/icons/fontello.eot?7377288#iefix") format('embedded-opentype'), url("../fonts/icons/fontello.woff2?7377288") format('woff2'), url("../fonts/icons/fontello.woff?7377288") format('woff'), url("../fonts/icons/fontello.ttf?7377288") format('truetype');
+  src: url("../fonts/icons/fontello.eot?20141070");
+  src: url("../fonts/icons/fontello.eot?20141070#iefix") format('embedded-opentype'), url("../fonts/icons/fontello.woff2?20141070") format('woff2'), url("../fonts/icons/fontello.woff?20141070") format('woff'), url("../fonts/icons/fontello.ttf?20141070") format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -529,4 +529,107 @@ a .bubble {
   font-family: 'Helvetica', 'Arial', sans-serif;
   font-style: normal !important;
   -webkit-text-stroke-width: 0 !important;
+}
+.api-form-page {
+  overflow: hidden;
+}
+.api-form-page h2 {
+  color: #fff;
+  margin: 15px 0 0;
+  position: relative;
+  padding: 10px 0;
+  font-weight: 100;
+  background: #685f99;
+  -webkit-text-stroke-width: 0.1px;
+}
+.api-form-page .center {
+  width: 500px;
+  margin: 20px auto 0;
+  text-align: center;
+}
+.api-form-page .claire-face {
+  margin: 0 auto;
+  width: 125px;
+  height: 145.83333333333334px;
+}
+.api-signup-form {
+  width: 600px;
+  margin: 30px auto;
+}
+.api-signup-form form .row {
+  display: table;
+  width: 100%;
+  height: 42px;
+  margin: 10px 0;
+}
+.api-signup-form form .row label,
+.api-signup-form form .row input {
+  display: table-cell;
+  padding: 10px;
+  vertical-align: top;
+}
+.api-signup-form form .row label {
+  width: 45%;
+  text-align: right;
+}
+.api-signup-form form .row input,
+.api-signup-form form .row select {
+  width: 100%;
+  font-family: 'Lato', 'Lucida Sans Unicode', 'Lucida Sans', 'Helvetica Neue', 'Helvetica', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  background: #ece9ff;
+  color: #9081de;
+  border: 1px solid #dbd4ff;
+}
+.api-signup-form form .row input:focus,
+.api-signup-form form .row select:focus {
+  background: #fce0a4;
+  color: #000;
+}
+.api-signup-form form .row select {
+  height: 42px;
+}
+.api-signup-form form .row select:active,
+.api-signup-form form .row select:focus {
+  outline: 0px !important;
+}
+.api-signup-form form .row input {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  position: relative;
+  -webkit-appearance: none;
+}
+.api-signup-form form input[type=submit] {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background: #a4d462;
+  color: #e5f9ca;
+  font-weight: 600;
+  border: 1px solid transparent;
+  font-family: 'Lato', 'Lucida Sans Unicode', 'Lucida Sans', 'Helvetica Neue', 'Helvetica', sans-serif;
+  font-size: 1rem;
+  padding: 8px;
+  margin: 20px;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+.api-signup-form form input[type=submit]:hover {
+  color: #fff;
+}
+.fade-transition {
+  -webkit-transition: opacity 0.5s ease;
+  -moz-transition: opacity 0.5s ease;
+  -ms-transition: opacity 0.5s ease;
+  -o-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  opacity: 1;
+}
+.fade-enter,
+.fade-leave {
+  opacity: 0;
 }
