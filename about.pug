@@ -3,7 +3,7 @@
 doctype html
 html
   head
-    include ./head.jade
+    include ./head.pug
     link(rel='stylesheet', type='text/css', href='css/about.css')
   body
     #info-container
@@ -13,25 +13,25 @@ html
           .claire-face
         ul#toc
       .info-section#whyclaire
-        include:md ./md/whyclaire.md
+        include:marked ./md/whyclaire.md
       .info-section#approach
-        include:md ./md/approach.md
+        include:marked ./md/approach.md
       .info-section#features
-        include:md ./md/features.md
+        include:marked ./md/features.md
       .info-section#comparison
-        include:md ./md/comparison.md
+        include:marked ./md/comparison.md
       .info-section#limitations
-        include:md ./md/limitations.md
+        include:marked ./md/limitations.md
       .info-section#faq
-        include:md ./md/faq.md
+        include:marked ./md/faq.md
       .info-section#terminology
-        include:md ./md/terminology.md
+        include:marked ./md/terminology.md
       .info-section#devnotes
-        include:md ./md/devnotes.md
+        include:marked ./md/devnotes.md
       .info-section#legal
-        include:md ./md/legal.md
+        include:marked ./md/legal.md
   
-    include ./footer.jade
+    include ./footer.pug
 
     script(src='//learnengli.sh/js/underscore-min.js')
     script(src='js/claire.common.min.js')

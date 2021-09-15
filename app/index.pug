@@ -3,7 +3,7 @@
 doctype html
 html.no-fouc
   head
-    include ../head.jade
+    include ../head.pug
     link(rel='stylesheet', type='text/css', href='../css/app.css')
   body
     #blanket
@@ -180,7 +180,7 @@ html.no-fouc
                       v-touch:pan='panLanguages($event)', 
                       v-on:contextmenu.stop.prevent='', 
                       transition='expand-up')
-        include ../langpanel.jade
+        include ../langpanel.pug
       #help(v-if='helpIsOn', transition='expand-up')
         .row#help-syntagma-one
           .syntagma
@@ -235,7 +235,7 @@ html.no-fouc
                                 ontouchstart='toggleHover(this)', ontouchend='toggleHover(this)')
             p(lang='{{ language }}') {{ help.copyToClipboard[language] || help.copyToClipboard.en }}
           
-    include ../footer.jade
+    include ../footer.pug
     
     script(src='//learnengli.sh/js/underscore-min.js')
     script(src='../js/claire.common.min.js')

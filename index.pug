@@ -3,8 +3,8 @@
 doctype html
 html
   head
-    include ./head.jade
-    link(rel='stylesheet', type='text/css', href='//learnengli.sh/css/javascript.fullPage.css')
+    include ./head.pug
+    link(rel='stylesheet', type='text/css', href='css/javascript.fullPage.css')
     link(rel='stylesheet', type='text/css', href='css/landing.css')
   body
     #loading-mask.show
@@ -16,7 +16,7 @@ html
         .vert-center-wrapper
           .content
             #language-panel
-              include ./langpanel.jade
+              include ./langpanel.pug
               
             #hello
               #hello-left Hello, I'm
@@ -826,7 +826,7 @@ html
                     img(src='/images/other_logos/atom.png')
                   .tooltip Atom
                 li
-                  a(href="http://www.jade-lang.org/", target="_blank")
+                  a(href="http://www.pug-lang.org/", target="_blank")
                     img(src='/images/other_logos/jade.svg')
                   .tooltip Jade
                 li
@@ -867,19 +867,19 @@ html
               ul.legal
                 h2 Legal
                 #legal-credits
-                  include:md ./md/legal-credits.md
+                  include:marked ./md/legal-credits.md
               
-    include ./footer.jade
+    include ./footer.pug
 
-    script(src='//learnengli.sh/js/underscore-min.js')
+    script(src='js/underscore-min.js')
     script(src='js/claire.common.min.js')
     
     script(src='//cdnjs.cloudflare.com/ajax/libs/classlist/2014.01.31/classList.min.js')
     
-    script(src='//learnengli.sh/js/hammer.min.js')
-    script(src='//learnengli.sh/js/micromarkdown.js')
-    script(src='//learnengli.sh/js/smartquotes.min.js')
-    script(src='//learnengli.sh/js/javascript.fullPage.min.js')
+    script(src='js/hammer.min.js')
+    script(src='js/micromarkdown.js')
+    script(src='js/smartquotes.min.js')
+    script(src='js/javascript.fullPage.min.js')
     
     script(src='js/claire.landing.min.js')
 

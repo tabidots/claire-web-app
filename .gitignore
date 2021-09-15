@@ -20,9 +20,9 @@ api_signup.html
 /fonts/kr
 /fonts/ml
 /admin
-/js
-/md
-/css/javascript.fullPage.css
+# /js
+# /md
+# /css/javascript.fullPage.css
 maketar.sh
 claire_site.tar
 .htaccess
