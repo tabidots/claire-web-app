@@ -4,7 +4,7 @@ doctype html
 html.no-fouc
   head
     include ../head.pug
-    link(rel='stylesheet', type='text/css', href='../css/app.css')
+    link(rel='stylesheet', type='text/css', href='../../css/app.css')
   body
     #blanket
     #app(v-on:click='reset($event)', v-touch:press='toggleDemoMode($event)', v-touch-options:press='{ time: 1000 }')
