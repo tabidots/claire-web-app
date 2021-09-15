@@ -136,13 +136,13 @@ html.no-fouc
             li
               h3 original:
               div
-                {{{ annotation.original | markdown }}}
+                span {{{ annotation.original | markdown }}}
                 .icon.cross
             template(v-if='annotation.revision != "(dependent on context)"')
               li
                 h3 revision:
                 div 
-                  {{ annotation.revision }}
+                  span {{ annotation.revision }}
                   .icon.check
             template(v-if="annotation.alternatives.length")
               li
